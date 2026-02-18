@@ -16,7 +16,7 @@ pipeline {
     stage('Terraform Init') {
       steps {
         dir('terraform') {
-          sh 'terraform init'
+          bat 'terraform init'
         }
       }
     }
@@ -28,10 +28,11 @@ pipeline {
           credentialsId: 'aws-creds'
         ]]) {
           dir('terraform') {
-            sh 'terraform apply -auto-approve -var="bucket_name=bhanu-cicd-demo-12345"'
+            bat 'terraform apply -auto-approve -var="bucket_name=bhanu-cicd-demo-12345"'
           }
         }
       }
     }
   }
 }
+
